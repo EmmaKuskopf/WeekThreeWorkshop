@@ -1,0 +1,205 @@
+/* 
+Color pallete. This section defines variables for the color pallete,
+so that we can refer to particular colors by name instead of hexadecimal values.
+This is applied to the 'root' psuedo-element, which just means that these color
+variables are available to be used anywhere in our html document
+*/
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --colour1: #0B1D51;
+    --colour2: #797596;
+    --colour3: #A1869E;
+    --colour4: #BBADA0;
+    --colour5: #D1C6AD;
+}
+
+/* The body of the document has a white background and is set up as a vertical flexbox. */
+body {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+/* Defines the main container size, we are limiting to 72em max */
+.main-container {
+    max-width: 72em;
+    font-family: Inter;
+    color: var(--white);
+    align-content: center;
+    margin: 0 auto
+}
+
+/* Here we define the aspects of style of our elements other than their grid layout */
+.banner {
+  padding: 0.5em;
+  background-color: var(--colour2);
+
+}
+
+.banner-title {
+    font-size: 3em;
+    color: var(--white);
+}
+
+.banner-subtitle {
+    font-size: 2.25em;
+    color: var(--white_);
+}
+
+.team-member-card {
+    background-color: var(--colour3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    overflow: hidden;
+    /* TODO: style the card as a column based flexbox with rounded corners */
+}
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.team-member-card-image {
+    width: 100%;
+}
+
+.team-member-card-blurb {
+    padding: 0.5em;
+    color: var(--white);   
+}
+
+.our-clients-title {
+    background-color: var(--colour5);
+    color: var(--colour3);
+    font-size: 3em;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    text-align: center;
+}
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.client-icon {
+    width: 100%;
+}
+
+/* now we create names for the grid areas for specific elements */
+#banner {
+    grid-area: ban;
+}
+
+#teamMemberCard1 {
+    grid-area: tm1;
+}
+
+#teamMemberCard2 {
+    grid-area: tm2;
+}
+
+#teamMemberCard3 {
+    grid-area: tm3;
+}
+
+#ourClientsTitle {
+    grid-area: oct;
+}
+
+#clientIcon1 {
+    grid-area: ci1;
+}
+
+#clientIcon2 {
+    grid-area: ci2;
+}
+
+#clientIcon3 {
+    grid-area: ci3;
+}
+
+#clientIcon4 {
+    grid-area: ci4;
+}
+
+#clientIcon5 {
+    grid-area: ci5;
+}
+
+#clientIcon6 {
+   grid-area: ci6;
+}
+
+#clientIcon7 {
+    grid-area: ci7;
+}
+
+#clientIcon8 {
+    grid-area: ci8;
+}
+
+/* Use a flexible layout grid */
+.main-container {
+    display: grid;
+    column-gap: 1em;
+}
+  
+/* 
+Responsive Layout breakpoints. We start 'mobile-first' i.e. we define how the layout should look
+for the smallest screen sizes. In this case we want a single column that spans the main container.
+Because this CSS definition comes first, it will apply by default. Then we override it below with 
+media queries for progressively bigger screen widths
+*/
+.main-container {
+        grid-template:
+            "ban ban ban ban" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "tm1 tm1 tm1 tm1" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "tm2 tm2 tm2 tm2" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "tm3 tm3 tm3 tm3" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "oct oct oct oct" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "ci1 ci1 ci2 ci2" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            " ci3 ci3 ci4 ci4" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "ci5 ci5 ci6 ci6" minmax(2em, auto)
+            " .   .   .   . " minmax(1em, auto)
+            "ci7 ci7 ci8 ci8" minmax(2em, auto)
+}
+
+@media (min-width: 50em) {
+    .main-container {
+        grid-template:
+            "ban ban ban ban ban ban ban ban" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "tm1 tm1 tm1 tm1 tm2 tm2 tm2 tm2" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            " .   .  tm3 tm3 tm3 tm3  .   . " minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(4em, auto)
+            "oct oct oct oct oct oct oct oct" minmax(2em, auto)
+            " .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "ci1 ci1 ci1 ci1 ci2 ci2 ci2 ci2" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(1em, auto)
+            " ci3 ci3 ci3 ci3 ci4 ci4 ci4 ci4" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(1em, auto)
+            "ci5 ci5 ci5 ci5 ci6 ci6 ci6 ci6" minmax(8em, auto)
+            " .   .   .   .   .   .   .   . " minmax(1em, auto)
+            "ci7 ci7 ci7 ci7 ci8 ci8 ci8 ci8" minmax(8em, auto)
+    }
+}
+
+@media (min-width: 75em) {
+    .main-container {
+        grid-template:
+            "ban ban ban ban ban ban ban ban ban ban ban ban" minmax(8em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "tm1 tm1 tm1 tm1 tm2 tm2 tm2 tm2 tm3 tm3 tm3 tm3" minmax(32em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(4em, auto)
+            "oct oct oct oct oct oct oct oct oct oct oct oct" minmax(2em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(2em, auto)
+            "ci1 ci1 ci1 ci2 ci2 ci2 ci3 ci3 ci3 ci4 ci4 ci4" minmax(8em, auto)
+            " .   .   .   .   .   .   .   .   .   .   .   . " minmax(1em, auto)
+            "ci5 ci5 ci5 ci6 ci6 ci6 ci7 ci7 ci7 ci8 ci8 ci8" minmax(8em, auto)
+    }
+}
